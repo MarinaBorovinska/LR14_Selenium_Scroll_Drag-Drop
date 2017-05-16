@@ -36,18 +36,20 @@ public class LoginPageTest {
         loginPage.clickLogin();
     }
 
-    @Test(groups = {"functest", "createSubtask"}, dependsOnMethods = {"login"})
+    @Test(enabled = false, groups = {"functest", "createSubtask"}, dependsOnMethods = {"login"})
     public void createSubtask () {
         createSubtask.open();
         createSubtask.createNewSubtask();
         createSubtask.inputSummarySubtask(summary);
         createSubtask.submitSubtask();
     }
-
-    @Test(enabled = false, groups = {"functest", "deleteSubtask"}, dependsOnMethods = {"login"})
+   // enabled = false,
+    @Test(groups = {"functest", "deleteSubtask"}, dependsOnMethods = {"login"})
     public void deleteSubtask () {
         deleteSubtask.open();
-        deleteSubtask.deleteSubtask();
+        deleteSubtask.openSubtaskDelete();
+        deleteSubtask.clickActionsMore();
+        deleteSubtask.submitSubtaskDelete();
     }
 
     @AfterTest

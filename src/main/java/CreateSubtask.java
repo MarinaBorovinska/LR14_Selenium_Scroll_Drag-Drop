@@ -16,6 +16,7 @@ public class CreateSubtask{
     }
 
     public CreateSubtask createNewSubtask(){
+        (new WebDriverWait(driver, 3)).until(ExpectedConditions.presenceOfElementLocated(subtaskCreate));
         driver.findElement(subtaskCreate).click();
         return this;
     }
@@ -33,7 +34,7 @@ public class CreateSubtask{
     }
 
     public CreateSubtask open(){
-        driver.get("http://soft.it-hillel.com.ua:8080/browse/QAAUT-60");
+        driver.get("http://soft.it-hillel.com.ua:8080/browse/QAAUT-224");
         driver.manage().window().maximize();
         return this;
     }
