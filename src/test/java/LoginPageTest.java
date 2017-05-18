@@ -15,7 +15,7 @@ public class LoginPageTest {
 
     String login = "marina.borovinska";
     String password = "March62017";
-    String summary = "test2Marina";
+    String summary = "test3Marina";
 
     @BeforeTest
     public void before() {
@@ -36,16 +36,17 @@ public class LoginPageTest {
         loginPage.clickLogin();
     }
 
-    @Test(enabled = false, groups = {"functest", "createSubtask"}, dependsOnMethods = {"login"})
-    public void createSubtask () {
+    @Test(groups = {"functest", "createSubtask"}, dependsOnMethods = {"login"})
+    public void createSubtask () throws InterruptedException {
         createSubtask.open();
         createSubtask.createNewSubtask();
         createSubtask.inputSummarySubtask(summary);
         createSubtask.submitSubtask();
+        Thread.sleep(3000);
     }
    // enabled = false,
-    @Test(groups = {"functest", "deleteSubtask"}, dependsOnMethods = {"login"})
-    public void deleteSubtask () {
+    @Test(groups = {"functest", "deleteSubtask"}, dependsOnMethods = {"login", "createSubtask"})
+    public void deleteSubtask () throws InterruptedException {
         deleteSubtask.open();
         deleteSubtask.openSubtaskDelete();
         deleteSubtask.clickActionsMore();

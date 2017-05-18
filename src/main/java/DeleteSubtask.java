@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DeleteSubtask {
 
-    By subtaskToDelete = By.xpath(".//a[.='test2Marina']");
+    By subtaskToDelete = By.xpath(".//a[.='test3Marina']");
     By subtaskActionsMore = By.xpath(".//*[@id='opsbar-operations_more']");
     By subtaskActionDelete = By.xpath(".//*[@id='delete-issue']");
     By deleteIssueSubmit = By.xpath(".//*[@id='delete-issue-submit']");
@@ -30,21 +30,23 @@ public class DeleteSubtask {
 
     public DeleteSubtask clickActionsMore() {
 
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-200 )", "");
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(subtaskActionsMore));
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-150 )", "");
+        (new WebDriverWait(driver, 3)).until(ExpectedConditions.presenceOfElementLocated(subtaskActionsMore));
         driver.findElement(subtaskActionsMore).click();
         return this;
     }
 
     public DeleteSubtask submitSubtaskDelete(){
 
-      (new WebDriverWait(driver, 3)).until(ExpectedConditions.presenceOfElementLocated(subtaskActionDelete));
+        driver.findElement(subtaskActionsMore).click();
+
+        (new WebDriverWait(driver, 3)).until(ExpectedConditions.presenceOfElementLocated(subtaskActionDelete));
 
  //    (new WebDriverWait(driver, 5, 100)).until(ExpectedConditions.visibilityOfElementLocated(subtaskActionDelete));
-      driver.findElement(subtaskActionDelete).click();
+        driver.findElement(subtaskActionDelete).click();
 
- //       (new WebDriverWait(driver, 5, 100)).until(ExpectedConditions.visibilityOfElementLocated(deleteIssueSubmit));
-//        driver.findElement(deleteIssueSubmit).submit();
+        (new WebDriverWait(driver, 5, 100)).until(ExpectedConditions.visibilityOfElementLocated(deleteIssueSubmit));
+        driver.findElement(deleteIssueSubmit).submit();
         return this;
     }
 
